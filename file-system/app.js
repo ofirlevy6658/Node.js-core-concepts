@@ -1,6 +1,12 @@
 const fs = require("fs/promises");
 
 (async () => {
+  // commands
+  const CREATE_FILE = "create a file";
+  const DELETE_FILE = "delete a file";
+  const RENAME_FILE = "rename a file";
+  const ADD_TO_FILE = "add to a file";
+
   const createFile = async (path) => {
     try {
       // we want to check whether or not we already have that file
@@ -16,9 +22,16 @@ const fs = require("fs/promises");
       newFileHandle.close();
     }
   };
+  const deleteFile = async (path) => {
+    console.log(path);
+  };
 
-  // commands
-  const CREATE_FILE = "create a file";
+  const renameFile = async (path) => {
+    console.log(firstPath, secondPath);
+  };
+  const addToFile = async (path, content) => {
+    console.log(path);
+  };
 
   const commandFileHandler = await fs.open("./command.txt", "r");
 
@@ -44,6 +57,11 @@ const fs = require("fs/promises");
     if (command.includes(CREATE_FILE)) {
       const filePath = command.substring(CREATE_FILE.length + 1);
       createFile(filePath);
+    }
+
+    if (command.includes(DELETE_FILE)) {
+      const filePath = command.substring(DELETE_FILE.length + 1);
+      deleteFile(filePath);
     }
   });
 
