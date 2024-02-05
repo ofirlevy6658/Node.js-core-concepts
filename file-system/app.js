@@ -30,7 +30,7 @@ const fs = require("fs/promises");
     console.log(firstPath, secondPath);
   };
   const addToFile = async (path, content) => {
-    console.log(path);
+    console.log("path");
   };
 
   const commandFileHandler = await fs.open("./command.txt", "r");
